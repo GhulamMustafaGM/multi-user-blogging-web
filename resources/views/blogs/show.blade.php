@@ -12,6 +12,7 @@
         <h1><a href=" {{ route('blogs.edit', $blog->id) }}">Edit </a> {{ $blog->title }}</h1>
     <form method="post" action="{{ route('blogs.delete', $blog->id) }}">
         @csrf
+        {{ method_field('delete') }}
 
         <button type="submit" class="btn btn-danger" >Delete</button>
     </form>
