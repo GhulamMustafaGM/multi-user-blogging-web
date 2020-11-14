@@ -10,7 +10,7 @@
             <h1>{{ $blog->title }}</h1>
         </div>
         <h1><a href=" {{ route('blogs.edit', $blog->id) }}">Edit </a> {{ $blog->title }}</h1>
-    <form method="post" action="{{ roue('blogs.delete', $blog->id) }}">
+    <form method="post" action="{{ route('blogs.delete', $blog->id) }}">
         @csrf
 
         <button type="submit" class="btn btn-danger" >Delete</button>
