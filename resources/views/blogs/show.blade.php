@@ -7,8 +7,9 @@
 <div class="container-fluid">
     <article>
         <div class="jumbotron">
+            <div class="col-md-12">
             <h1>{{ $blog->title }}</h1>
-        
+            <div>
         <a class="btn btn-primary btn-x pull-left" href=" {{ route('blogs.edit', $blog->id) }}">Edit</a>
         <form method="post" action="{{ route('blogs.delete', $blog->id) }}">
             @csrf
@@ -16,6 +17,7 @@
 
             <button type="submit" class="btn btn-danger" >Delete</button>
             </form>
+            </div>
         </div>
         <div class="col-md-12">
             <p>{{ $blog->body }}</p>
