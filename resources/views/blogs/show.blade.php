@@ -9,7 +9,7 @@
         <div class="jumbotron">
             <div class="col-md-12">
             <h1>{{ $blog->title }}</h1>
-            <div>
+            <div class="btn-group">
         <a class="btn btn-primary btn-x pull-left" href=" {{ route('blogs.edit', $blog->id) }}">Edit</a>
         <form method="post" action="{{ route('blogs.delete', $blog->id) }}">
             @csrf
