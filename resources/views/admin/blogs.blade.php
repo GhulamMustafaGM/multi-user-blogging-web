@@ -15,7 +15,7 @@
                 <hr>
                 @foreach($publishedBlogs as $blog)
                     <h2><a href={{ route('blogs.show', $blog->id) }}>{{ $blog->title }}</a></h2>
-                    {{-- {!! str_limit($blog->body, 100) !!} --}}
+                        {{-- {!! str_limit($blog->body, 100) !!} --}}
 
                     <form action="{{ route('blogs.update', $blog->id) }}" method="post">
                         {{ method_field('patch') }}
