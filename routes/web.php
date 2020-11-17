@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogsController; 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +21,32 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
 Route::get('/', [BlogsController::class, 'index']);
 
 Auth::routes();
 
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs');
+Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
+Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blogs.store');
 
-Route::get('blogs',[BlogsController::class, 'index'])->name('blogs');
+// keep trashed routes here
+Route::get('/blogs/trash', [BlogsController::class,'trash'])->name('blogs.trash');
+Route::get('/blogs/trash/{id}/restore', [BlogsController::class, 'restore'])->name('blogs.restore');
+Route::delete('/blogs/trash/{id}/permanent-delete', [BlogsController::class, 'permanentDelete'])->name('blogs.permanent-delete');
 
-Route::get('blogs/create',[BlogsController::class, 'create'])->name('blogs.create');
-Route::post('blogs/store',[BlogsController::class, 'store'])->name('blogs.store');
-Route::get('blogs/{id}', [BlogsController::class, 'show'])->name('blogs.show');
+Route::get('/blogs/{id}', [BlogsController::class, 'show'])->name('blogs.show');
+Route::get('/blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
+Route::patch('/blogs/{id}/update', [BlogsController::class, 'update'])->name('blogs.update');
+Route::delete('/blogs/{id}/delete', [BlogsController::class, 'delete'])->name('blogs.delete');
 
-Route::get('blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
-Route::patch('blogs/{id}/update', [BlogsController::class, 'update'])->name('blogs.update');
+// admin routes
+Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::get('/admin/blogs', [AdminController::class, 'blogs'])->name('admin.blogs');
 
-Route::delete('blogs/{id}/delete', [BlogsController::class, 'delete'])->name('blogs.delete');
+// route resource
+Route::resource('categories', 'CategoryController');
+Route::resource('users', 'UserController');
 
-
+// contact forms
+Route::get('contact', [MailController::class, 'contact'])->name('contact');
+Route::post('contact/send', [MailController::class, 'send'])->name('mail.send');
