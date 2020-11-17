@@ -35,3 +35,4 @@ Route::patch('blogs/{id}/update', [BlogsController::class, 'update'])->name('blo
 
 Route::delete('blogs/{id}/delete', [BlogsController::class, 'delete'])->name('blogs.delete');
 
+

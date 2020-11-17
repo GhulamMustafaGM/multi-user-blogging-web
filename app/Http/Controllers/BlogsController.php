@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Blog;
-use App\Category;
-use App\Mail\BlogPublished;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Session;
+use App\Models\Blog;
+use App\Models\User;
+use App\Models\Category;
+use App\Mail\BlogPublished;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class BlogsController extends Controller {
 
